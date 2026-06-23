@@ -1,0 +1,172 @@
+<!DOCTYPE html><html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TP-7: Funciones en JavaScript</title>
+</head>
+<body><p>Completar con la implementación de las funciones correspondientes</p><script type="text/javascript">
+
+// 1
+function suma(num1, num2) {
+    return num1 + num2;
+}
+
+// 2
+const elevarAlCubo = function(num) {
+    return num * num * num;
+}
+
+// 3
+function restoDivisionEntera(dividendo, divisor) {
+    return dividendo % divisor;
+}
+
+// 4
+const numeroPi = () => {
+    return Math.PI;
+}
+
+// 5
+function numeroRandom() {
+    return Math.random();
+}
+
+// 6
+const numeroRandomDesdeHasta = function(desde, hasta) {
+    return Math.floor(Math.random() * (hasta - desde + 1)) + desde;
+}
+
+// 7
+const esPar = (num) => {
+    return num % 2 === 0;
+}
+
+// 8
+function esPositivo(num) {
+    return num > 0;
+}
+
+// 9
+const clasificarNumero = function(num) {
+    let paridad = esPar(num) ? "par" : "impar";
+
+    let signo;
+
+    if (num > 0) {
+        signo = "positivo";
+    } else if (num < 0) {
+        signo = "negativo";
+    } else {
+        signo = "no positivo";
+    }
+
+    return "El número " + num + " es " + paridad + " y " + signo + ".";
+}
+
+// 10
+const transformarMayuscula = (texto) => {
+    return texto.toUpperCase();
+}
+
+// 11
+function primeraLetra(texto) {
+    return texto.charAt(0);
+}
+
+// 12
+const sinPrimeraLetra = function(texto) {
+    return texto.slice(1);
+}
+
+// 13
+const primeraLetraMayuscula = (texto) => {
+    return texto.charAt(0).toUpperCase() + texto.slice(1);
+}
+
+// 14
+function terminaCon(palabra, terminacion) {
+    return palabra.endsWith(terminacion);
+}
+
+// 15
+const palabraInvertida = function(texto) {
+    return texto.split("").reverse().join("");
+}
+
+console.log("Resultados de suma():")
+console.log(suma(2,3));
+console.log(suma(4,4));
+console.log(suma(-10,10));
+
+console.log("Resultados de elevarAlCubo():")
+console.log(elevarAlCubo(3));
+console.log(elevarAlCubo(99));
+
+console.log("Resultados de restoDivisionEntera():")
+console.log(restoDivisionEntera(1,3));
+console.log(restoDivisionEntera(2,3));
+console.log(restoDivisionEntera(3,3));
+console.log(restoDivisionEntera(4,3));
+
+console.log("Resultado de numeroPi():")
+console.log(numeroPi())
+
+console.log("Resultados de numeroRandom():")
+console.log(numeroRandom())
+console.log(numeroRandom())
+console.log(numeroRandom())
+
+console.log("Resultados de numeroRandomDesdeHasta():")
+console.log(numeroRandomDesdeHasta(1,6))
+console.log(numeroRandomDesdeHasta(2,5))
+console.log(numeroRandomDesdeHasta(3,4))
+
+console.log("Resultados de esPar():")
+console.log(esPar(4));
+console.log(esPar(5));
+console.log(esPar(0));
+console.log(esPar(-2));
+
+console.log("Resultados de esPositivo():")
+console.log(esPositivo(4));
+console.log(esPositivo(-3));
+console.log(esPositivo(0));
+
+console.log("Resultados de clasificarNumero():")
+console.log(clasificarNumero(4));
+console.log(clasificarNumero(-3));
+console.log(clasificarNumero(0));
+
+console.log("Resultados de transformarMayuscula():")
+console.log(transformarMayuscula("Plataformas Móviles"))
+console.log(transformarMayuscula("hola mundo"))
+console.log(transformarMayuscula("abc"))
+
+console.log("Resultados de primeraLetra():")
+console.log(primeraLetra("Plataformas Móviles"))
+console.log(primeraLetra("hola mundo"))
+console.log(primeraLetra("abc"))
+
+console.log("Resultados de sinPrimeraLetra():")
+console.log(sinPrimeraLetra("Plataformas Móviles"))
+console.log(sinPrimeraLetra("hola mundo"))
+console.log(sinPrimeraLetra("abc"))
+
+console.log("Resultados de primeraLetraMayuscula():")
+console.log(primeraLetraMayuscula("plataformas móviles"))
+console.log(primeraLetraMayuscula("hola mundo"))
+console.log(primeraLetraMayuscula("abc"))
+
+console.log("Resultados de terminaCon():")
+console.log(terminaCon("hola", "a"));
+console.log(terminaCon("hola", "o"));
+console.log(terminaCon("plataformas", "mas"));
+console.log(terminaCon("plataformas", "más"));
+
+console.log("Resultados de palabraInvertida():")
+console.log(palabraInvertida("plataformas móviles"))
+console.log(palabraInvertida("hola mundo"))
+console.log(palabraInvertida("abc"))
+
+</script></body>
+</html>
