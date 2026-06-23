@@ -1,73 +1,109 @@
-/* Más de 400px de ancho */
-@media screen and (min-width: 401px) {
-  body {
-    background-color: rgb(40, 60, 80);
-  }
+
+    * {
+        margin: 0;
+         padding: 0;
+        }
+
+    body {
+        margin: 1rem; 
+        background-color: #012; 
+        color: #e6e8ff; 
+        font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+    }
+   
+    article {
+        margin: 0 auto
+    }
+   
+    a {
+        color: #A06CD5
+    }
+    
+    a:visited {
+        color: #E2CFEA
+    }
+    
+    p {
+        margin: 1rem 0;
+    }
+   
+    figure {
+        text-align: center;
+    }
+   
+    img {
+        display: block; max-width: 100%; height: auto; margin: 0 auto; border-radius: 10px;
+    }
+
+    @media (min-width: 480px){
+body{
+    background-color: rgb(40,60,80);
+}
+    }
+
+@media (max-width: 799px) {
+    h1{
+        text-align: center;
+    }
+    
 }
 
-/* Menos de 800px */
-@media screen and (max-width: 799px) {
-  h1 {
-    text-align: center;
-  }
+@media (orientation: landscape){
+    article{
+        max-width: 50ch;
+    }
 }
 
-/* Pantalla horizontal */
-@media screen and (orientation: landscape) {
-  article {
-    max-width: 50ch;
-  }
+@media (min-height: 200px){
+    h1{
+        background-color: greenyellow;
+    }
 }
 
-/* Alto mínimo de 200px */
-@media screen and (min-height: 200px) {
-  h1 {
-    background-color: #345;
-  }
-}
-
-/* Impresión */
 @media print {
-  p {
-    font-family: serif;
-  }
+    p{
+        font-family: serif;
+    }
 }
 
-/* Preferencia colores claros */
-@media (prefers-color-scheme: light) {
-  body,
-  h1 {
-    color: #111;
-    background-color: #DDD;
-  }
+@media (prefers-color-scheme: light){
+    body{
+        color:#111;
+        background-color: #DDD;
+    }
+    h1{
+        color:#111;
+        background-color: #DDD;
+    }
 }
 
-/* Pantalla sin hover */
-@media screen and (hover: none) {
-  a {
+@media screen and ( hover:none){
+    href{
     background-color: #212;
     padding: 2px 5px;
-  }
+    }
 }
 
-/* Entre 800px y 900px */
-@media screen and (min-width: 800px) and (max-width: 899px) {
-  img {
-    display: none;
-  }
+@media screen and(min-width:800px) and (max-width: 899px) {
+    img {
+        display: none;
+    }
 }
 
-/* Entre 200px y 400px */
 @media screen and (min-width: 200px) and (max-width: 400px) {
-  img {
-    height: 400px;
+    img{ 
+        height: 400px;  
     object-fit: cover;
-  }
-}
+}}
 
-/* Device Pixel Ratio mayor a 2 */
-@media screen and (min-resolution: 2.1dppx) {
-  article {
-    background-color: #667;
-  }
+/*  @media (-webkit-min-device-pixel-ratio: 2){
+    article{
+        background-color: #667;
+    }
+} */
+
+@media (min-resolution: 2dppx){
+    article{
+        background-color: #667;
+    }
 }
