@@ -1,23 +1,605 @@
-<!DOCTYPE html>
-<html>
-   <head>
-      <title>Hola Mundo!</title>
-   </head>
-   <body>
-     <h1>Trabajos Prácticos</h1>
-     <p>Listado de trabajos prácticos para la materia Plataformas Móviles</p>
-     <ul>
-         <li><a href="tp-1/index.html">Primer Trabajo</a></li>
-         <li><a href="tp-2/index.html">Segundo Trabajo</a></li> 
-         <li><a href="tp-3/index.html">Tercer Trabajo</a></li> 
-         <li><a href="tp-4/index.html">Cuarto Trabajo</a></li> 
-         <li><a href="tp-5/index.html">Quinto Trabajo</a></li> 
-         <li><a href="tp-6/index.html">Sexto Trabajo</a></li> 
-         <li><a href="tp-7/index.html">Septimo Trabajo</a></li> 
-         <li><a href="tp-8/index.html">Octavo Trabajo</a></li> 
-         <li><a href="tp-9/index.html">Noveno Trabajo</a></li> 
-           <li><a href="tp-10/index.html">Decimo Trabajo</a></li> 
+<!DOCTYPE html> <html lang="es"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vestuario Xeneize | Trabajos Prácticos</title>
 
-     </ul>
-   </body>
-</html>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        min-height: 100vh;
+        color: white;
+
+        /* Fondo estilo vestuario */
+        background:
+            linear-gradient(rgba(3, 15, 28, 0.72), rgba(0, 0, 0, 0.88)),
+            url("https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=2000&q=90");
+
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+
+    /* Capa de luz del vestuario */
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+
+        background:
+            radial-gradient(
+                circle at 50% 0%,
+                rgba(255,255,255,0.20),
+                transparent 38%
+            );
+
+        z-index: -1;
+    }
+
+    header {
+        text-align: center;
+        padding: 45px 20px 30px;
+    }
+
+    .escudo {
+        width: 95px;
+        height: 95px;
+        margin: auto;
+        border-radius: 50%;
+
+        background:
+            linear-gradient(
+                90deg,
+                #0b3c91,
+                #174fae
+            );
+
+        border: 5px solid #f4c400;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 24px;
+        font-weight: bold;
+
+        box-shadow:
+            0 0 25px rgba(244,196,0,0.45),
+            inset 0 0 15px rgba(0,0,0,0.5);
+    }
+
+    h1 {
+        margin-top: 20px;
+        font-size: clamp(32px, 6vw, 65px);
+        text-transform: uppercase;
+        letter-spacing: 4px;
+
+        text-shadow:
+            3px 3px 0 #06316e,
+            0 0 20px rgba(255,255,255,0.25);
+    }
+
+    .subtitulo {
+        margin-top: 10px;
+        color: #e9c600;
+        font-size: 18px;
+        letter-spacing: 2px;
+    }
+
+    .vestuario {
+        width: min(1200px, 92%);
+        margin: 20px auto 60px;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 28px;
+    }
+
+    /* Casillero */
+    .locker {
+        position: relative;
+        min-height: 330px;
+        padding: 18px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(40,40,42,0.95),
+                rgba(10,10,12,0.98)
+            );
+
+        border: 2px solid #414141;
+        border-radius: 8px;
+
+        box-shadow:
+            inset 0 0 25px rgba(0,0,0,0.9),
+            0 15px 35px rgba(0,0,0,0.65);
+
+        overflow: hidden;
+
+        transition: 0.35s ease;
+    }
+
+    .locker:hover {
+        transform: translateY(-8px) scale(1.02);
+
+        border-color: #e5bd00;
+
+        box-shadow:
+            0 0 25px rgba(229,189,0,0.25),
+            0 20px 45px rgba(0,0,0,0.8);
+    }
+
+    /* Número del casillero */
+    .numero {
+        position: absolute;
+        top: 12px;
+        right: 15px;
+
+        color: #aaa;
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
+
+    /* Camiseta */
+    .camiseta {
+        width: 155px;
+        height: 175px;
+        margin: 30px auto 10px;
+
+        position: relative;
+
+        background:
+            linear-gradient(
+                90deg,
+                #062b70 0%,
+                #0847a4 35%,
+                #062b70 70%,
+                #031b48 100%
+            );
+
+        clip-path: polygon(
+            25% 0,
+            38% 12%,
+            50% 15%,
+            62% 12%,
+            75% 0,
+            100% 17%,
+            84% 39%,
+            76% 30%,
+            76% 100%,
+            24% 100%,
+            24% 30%,
+            16% 39%,
+            0 17%
+        );
+
+        filter:
+            drop-shadow(0 10px 10px rgba(0,0,0,0.6));
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        transition: 0.4s;
+    }
+
+    .locker:hover .camiseta {
+        transform: rotate(-2deg) scale(1.05);
+    }
+
+    /* Franja amarilla */
+    .camiseta::after {
+        content: "";
+
+        position: absolute;
+        top: 62px;
+        left: 0;
+
+        width: 100%;
+        height: 32px;
+
+        background: #f4c400;
+
+        box-shadow:
+            0 0 10px rgba(244,196,0,0.25);
+    }
+
+    /* Número */
+    .numero-camiseta {
+        position: relative;
+        z-index: 3;
+
+        margin-top: 55px;
+
+        font-size: 34px;
+        font-weight: bold;
+
+        color: white;
+
+        text-shadow:
+            2px 2px 4px black;
+    }
+
+    .titulo {
+        text-align: center;
+
+        color: #f4c400;
+
+        font-size: 21px;
+        font-weight: bold;
+
+        text-transform: uppercase;
+        letter-spacing: 1px;
+
+        margin-top: 12px;
+    }
+
+    .descripcion {
+        text-align: center;
+
+        color: #cfcfcf;
+
+        font-size: 13px;
+
+        margin: 8px 5px 20px;
+
+        line-height: 1.5;
+    }
+
+    .boton {
+        display: block;
+
+        width: 85%;
+
+        margin: auto;
+
+        padding: 11px;
+
+        text-align: center;
+
+        text-decoration: none;
+
+        color: #071c43;
+
+        background: #f4c400;
+
+        font-weight: bold;
+
+        border-radius: 4px;
+
+        text-transform: uppercase;
+
+        transition: 0.3s;
+    }
+
+    .boton:hover {
+        background: white;
+
+        transform: scale(1.04);
+
+        box-shadow:
+            0 0 15px rgba(255,255,255,0.35);
+    }
+
+    footer {
+        text-align: center;
+
+        padding: 25px;
+
+        background:
+            rgba(0,0,0,0.85);
+
+        border-top:
+            2px solid #e5bd00;
+
+        color: #aaa;
+
+        font-size: 13px;
+
+        letter-spacing: 1px;
+    }
+
+    footer strong {
+        color: #e5bd00;
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+
+        header {
+            padding-top: 30px;
+        }
+
+        .escudo {
+            width: 75px;
+            height: 75px;
+            font-size: 18px;
+        }
+
+        .vestuario {
+            grid-template-columns: 1fr;
+            width: 88%;
+        }
+
+        .locker {
+            min-height: 310px;
+        }
+    }
+</style>
+
+</head> <body>
+<header>
+
+    <div class="escudo">
+        CABJ
+    </div>
+
+    <h1>Vestuario Xeneize</h1>
+
+    <p class="subtitulo">
+        TRABAJOS PRÁCTICOS · PLATAFORMAS MÓVILES
+    </p>
+
+</header>
+
+
+<main class="vestuario">
+
+    <!-- TP 1 -->
+    <div class="locker">
+
+        <span class="numero">LOCKER 01</span>
+
+        <div class="camiseta">
+            <span class="numero-camiseta">01</span>
+        </div>
+
+        <div class="titulo">
+            Primer Trabajo
+        </div>
+
+        <p class="descripcion">
+            Primer desafío del vestuario.
+        </p>
+
+        <a class="boton" href="tp-1/index.html">
+            Entrar
+        </a>
+
+    </div>
+
+
+    <!-- TP 2 -->
+    <div class="locker">
+
+        <span class="numero">LOCKER 02</span>
+
+        <div class="camiseta">
+            <span class="numero-camiseta">02</span>
+        </div>
+
+        <div class="titulo">
+            Segundo Trabajo
+        </div>
+
+        <p class="descripcion">
+            Una nueva camiseta entra en juego.
+        </p>
+
+        <a class="boton" href="tp-2/index.html">
+            Entrar
+        </a>
+
+    </div>
+
+
+    <!-- TP 3 -->
+    <div class="locker">
+
+        <span class="numero">LOCKER 03</span>
+
+        <div class="camiseta">
+            <span class="numero-camiseta">03</span>
+        </div>
+
+        <div class="titulo">
+            Tercer Trabajo
+        </div>
+
+        <p class="descripcion">
+            Tercer desafío de la temporada.
+        </p>
+
+        <a class="boton" href="tp-3/index.html">
+            Entrar
+        </a>
+
+    </div>
+
+
+    <!-- TP 4 -->
+    <div class="locker">
+
+        <span class="numero">LOCKER 04</span>
+
+        <div class="camiseta">
+            <span class="numero-camiseta">04</span>
+        </div>
+
+        <div class="titulo">
+            Cuarto Trabajo
+        </div>
+
+        <p class="descripcion">
+            El próximo desafío espera.
+        </p>
+
+        <a class="boton" href="tp-4/index.html">
+            Entrar
+        </a>
+
+    </div>
+
+
+    <!-- TP 5 -->
+    <div class="locker">
+
+        <span class="numero">LOCKER 05</span>
+
+        <div class="camiseta">
+            <span class="numero-camiseta">05</span>
+        </div>
+
+        <div class="titulo">
+            Quinto Trabajo
+        </div>
+
+        <p class="descripcion">
+            Una nueva misión xeneize.
+        </p>
+
+        <a class="boton" href="tp-5/index.html">
+            Entrar
+        </a>
+
+    </div>
+
+
+    <!-- TP 6 -->
+    <div class="locker">
+
+        <span class="numero">LOCKER 06</span>
+
+        <div class="camiseta">
+            <span class="numero-camiseta">06</span>
+        </div>
+
+        <div class="titulo">
+            Sexto Trabajo
+        </div>
+
+        <p class="descripcion">
+            Seguimos avanzando.
+        </p>
+
+        <a class="boton" href="tp-6/index.html">
+            Entrar
+        </a>
+
+    </div>
+
+
+    <!-- TP 7 -->
+    <div class="locker">
+
+        <span class="numero">LOCKER 07</span>
+
+        <div class="camiseta">
+            <span class="numero-camiseta">07</span>
+        </div>
+
+        <div class="titulo">
+            Séptimo Trabajo
+        </div>
+
+        <p class="descripcion">
+            El vestuario sigue creciendo.
+        </p>
+
+        <a class="boton" href="tp-7/index.html">
+            Entrar
+        </a>
+
+    </div>
+
+
+    <!-- TP 8 -->
+    <div class="locker">
+
+        <span class="numero">LOCKER 08</span>
+
+        <div class="camiseta">
+            <span class="numero-camiseta">08</span>
+        </div>
+
+        <div class="titulo">
+            Octavo Trabajo
+        </div>
+
+        <p class="descripcion">
+            Otro desafío está listo.
+        </p>
+
+        <a class="boton" href="tp-8/index.html">
+            Entrar
+        </a>
+
+    </div>
+
+
+    <!-- TP 9 -->
+    <div class="locker">
+
+        <span class="numero">LOCKER 09</span>
+
+        <div class="camiseta">
+            <span class="numero-camiseta">09</span>
+        </div>
+
+        <div class="titulo">
+            Noveno Trabajo
+        </div>
+
+        <p class="descripcion">
+            La temporada se acerca al final.
+        </p>
+
+        <a class="boton" href="tp-9/index.html">
+            Entrar
+        </a>
+
+    </div>
+
+
+    <!-- TP 10 -->
+    <div class="locker">
+
+        <span class="numero">LOCKER 10</span>
+
+        <div class="camiseta">
+            <span class="numero-camiseta">10</span>
+        </div>
+
+        <div class="titulo">
+            Décimo Trabajo
+        </div>
+
+        <p class="descripcion">
+            El último desafío del vestuario.
+        </p>
+
+        <a class="boton" href="tp-10/index.html">
+            Entrar
+        </a>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <strong>VESTUARIO XENEIZE</strong>
+
+    <br><br>
+
+    Plataformas Móviles · Trabajos Prácticos
+
+</footer>
+
+</body> </html>
