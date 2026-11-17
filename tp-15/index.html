@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tablero de Puntos - DOM y JavaScript</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container my-1 my-sm-2 my-md-4 my-lg-5">
+        <h1>Tablero de Puntos</h1>
+
+        <div class="card">
+            <div class="card-body">
+
+                <div class="row text-center">
+                    <div class="col-5">
+                        <span class="display-1" id="puntos-local">0</span>
+                        <p class="m-0">Local</p>
+                    </div>
+
+                    <div class="col-2">
+                        <span class="display-1">:</span>
+                    </div>
+
+                    <div class="col-5">
+                        <span class="display-1" id="puntos-visitante">0</span>
+                        <p class="m-0">Visitante</p>
+                    </div>
+                </div>
+
+                <hr class="hr">
+
+                <h2>Actualizar Contador</h2>
+
+                <div class="row">
+                    <div class="col-6 col-sm-3 my-1">
+                        <button id="sumar-local" class="btn btn-primary d-block w-100">
+                            + Local
+                        </button>
+                    </div>
+
+                    <div class="col-6 col-sm-3 my-1">
+                        <button id="restar-local" class="btn btn-secondary d-block w-100">
+                            - Local
+                        </button>
+                    </div>
+
+                    <div class="col-6 col-sm-3 my-1">
+                        <button id="sumar-visitante" class="btn btn-primary d-block w-100">
+                            + Visitante
+                        </button>
+                    </div>
+
+                    <div class="col-6 col-sm-3 my-1">
+                        <button id="restar-visitante" class="btn btn-secondary d-block w-100">
+                            - Visitante
+                        </button>
+                    </div>
+                </div>
+
+                <hr>
+
+                <h2>Opciones del Partido</h2>
+
+                <div class="row">
+                    <div class="col-12 col-sm-4 my-1">
+                        <button id="invertir" class="btn btn-warning d-block w-100">
+                            Invertir Puntaje
+                        </button>
+                    </div>
+
+                    <div class="col-12 col-sm-4 my-1">
+                        <button id="finalizar" class="btn btn-danger d-block w-100">
+                            Finalizar Partido
+                        </button>
+                    </div>
+
+                    <div class="col-12 col-sm-4 my-1">
+                        <button id="reiniciar" class="btn btn-success d-block w-100">
+                            Reinicio
+                        </button>
+                    </div>
+                </div>
+
+                <p id="estado" class="text-center mt-3 fw-bold">
+                    Partido en juego
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script type="text/javascript">
+
+        let local = 0;
+        let visitante = 0;
+        let partidoFinalizado = false;
+
+        const puntosLocal = document.getElementById('puntos-local');
+        const puntosVisitante = document.getElementById('puntos-visitante');
+
+        function actualizarTablero() {
+            puntosLocal.textContent = local;
+            puntosVisitante.textContent = visitante;
+        }
+
+        function sumarLocal() {
+            if (!partidoFinalizado) {
+                local++;
+                actualizarTablero();
+            }
+        }
+
+        function restarLocal() {
+            if (!partidoFinalizado && local > 0) {
+                local--;
+                actualizarTablero();
+            }
+        }
+
+        function sumarVisitante() {
+            if (!partidoFinalizado) {
+                visitante++;
+                actualizarTablero();
+            }
+        }
+
+        function restarVisitante() {
+            if (!partidoFinalizado && visitante > 0) {
+                visitante--;
+                actualizarTablero();
+            }
+        }
+
+        function invertirPuntaje() {
+            if (!partidoFinalizado) {
+                let auxiliar = local;
+                local = visitante;
+                visitante = auxiliar;
+
+                actualizarTablero();
+            }
+        }
+
+        function finalizarPartido() {
+            partidoFinalizado = true;
+
+            document.getElementById('sumar-local').disabled = true;
+            document.getElementById('restar-local').disabled = true;
+            document.getElementById('sumar-visitante').disabled = true;
+            document.getElementById('restar-visitante').disabled = true;
+            document.getElementById('invertir').disabled = true;
+
+            document.getElementById('estado').textContent = 'Partido finalizado';
+        }
+
+        function reiniciarTablero() {
+            local = 0;
+            visitante = 0;
+            partidoFinalizado = false;
+
+            actualizarTablero();
+
+            document.getElementById('sumar-local').disabled = false;
+            document.getElementById('restar-local').disabled = false;
+            document.getElementById('sumar-visitante').disabled = false;
+            document.getElementById('restar-visitante').disabled = false;
+            document.getElementById('invertir').disabled = false;
+
+            document.getElementById('estado').textContent = 'Partido en juego';
+        }
+
+        document.getElementById('sumar-local').addEventListener('click', sumarLocal);
+        document.getElementById('restar-local').addEventListener('click', restarLocal);
+
+        document.getElementById('sumar-visitante').addEventListener('click', sumarVisitante);
+        document.getElementById('restar-visitante').addEventListener('click', restarVisitante);
+
+        document.getElementById('invertir').addEventListener('click', invertirPuntaje);
+        document.getElementById('finalizar').addEventListener('click', finalizarPartido);
+        document.getElementById('reiniciar').addEventListener('click', reiniciarTablero);
+
+    </script>
+</body>
+</html>
