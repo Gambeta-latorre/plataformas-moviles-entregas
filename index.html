@@ -1,18 +1,262 @@
 <!DOCTYPE html>
-<html>
-<head><title>Trabajos</title></head>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Trabajos Prácticos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Fredoka", sans-serif;
+            min-height: 100vh;
+            color: #fff;
+            background: linear-gradient(-45deg, #6a11cb, #2575fc, #ff4e8a, #ff9a3c);
+            background-size: 400% 400%;
+            animation: fondo 15s ease infinite;
+            padding: 40px 16px;
+        }
+
+        /* Fondo con degradado que se mueve */
+        @keyframes fondo {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.25);
+            animation: flotar 3s ease-in-out infinite;
+        }
+
+        @keyframes flotar {
+            0%, 100% { transform: translateY(0); }
+            50%      { transform: translateY(-8px); }
+        }
+
+        .subtitulo {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 8px;
+        }
+
+        /* Grilla responsiva de tarjetas */
+        .grilla {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .tarjeta {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 22px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.25s, background 0.25s, box-shadow 0.25s;
+            animation: aparecer 0.5s ease backwards;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-8px) rotate(-1deg) scale(1.03);
+            background: rgba(255, 255, 255, 0.28);
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .tarjeta:hover .emoji {
+            transform: scale(1.3) rotate(10deg);
+        }
+
+        /* Las tarjetas aparecen una tras otra */
+        @keyframes aparecer {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .tarjeta:nth-child(1)  { animation-delay: 0.05s; }
+        .tarjeta:nth-child(2)  { animation-delay: 0.10s; }
+        .tarjeta:nth-child(3)  { animation-delay: 0.15s; }
+        .tarjeta:nth-child(4)  { animation-delay: 0.20s; }
+        .tarjeta:nth-child(5)  { animation-delay: 0.25s; }
+        .tarjeta:nth-child(6)  { animation-delay: 0.30s; }
+        .tarjeta:nth-child(7)  { animation-delay: 0.35s; }
+        .tarjeta:nth-child(8)  { animation-delay: 0.40s; }
+        .tarjeta:nth-child(9)  { animation-delay: 0.45s; }
+        .tarjeta:nth-child(10) { animation-delay: 0.50s; }
+        .tarjeta:nth-child(11) { animation-delay: 0.55s; }
+        .tarjeta:nth-child(12) { animation-delay: 0.60s; }
+        .tarjeta:nth-child(13) { animation-delay: 0.65s; }
+        .tarjeta:nth-child(14) { animation-delay: 0.70s; }
+        .tarjeta:nth-child(15) { animation-delay: 0.75s; }
+        .tarjeta:nth-child(16) { animation-delay: 0.80s; }
+
+        .cabecera {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .emoji {
+            font-size: 2.2rem;
+            transition: transform 0.25s;
+        }
+
+        .numero {
+            font-weight: 700;
+            font-size: 0.9rem;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 4px 10px;
+            border-radius: 999px;
+        }
+
+        .titulo {
+            font-size: 1.15rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .etiqueta {
+            align-self: flex-start;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 999px;
+            color: #222;
+        }
+
+        .html      { background: #ffb38a; }
+        .css       { background: #8ad4ff; }
+        .bootstrap { background: #c9a7ff; }
+        .js        { background: #ffe066; }
+        .dom       { background: #9cf0b0; }
+        .api       { background: #ff9bb3; }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            opacity: 0.85;
+        }
+
+        /* Respeta a quien prefiere menos animaciones */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
 <body>
-<h1>Trabajos Prácticos</h1>
-<p><a href="tp-1/index.html">Trabajo 1</a></p>
-  <p><a href="tp-2/index.html">Trabajo 2</a></p>
-<p><a href="tp-3/index.html">Trabajo 3</a></p><p>
-  <a href="tp-4/index.html">Trabajo 4</a></p>
-<p><a href="tp-5/index.html">Trabajo 5</a></p>
-<p><a href="tp-6/index.html">Trabajo 6</a></p>
-<p><a href="tp-7/index.html">Trabajo 7</a></p>
-<p><a href="tp-8/index.html">Trabajo 8</a></p>
-<p><a href="tp-9/index.html">Trabajo 9</a></p>
-<p><a href="tp-10/index.html">Trabajo 10</a></p>
-<p><a href="tp-11/index.html">Trabajo 11</a></p>
+    <header>
+        <h1>🚀 Trabajos Prácticos</h1>
+        <p class="subtitulo">Plataformas Móviles · 16 trabajos</p>
+    </header>
+
+    <main class="grilla">
+        <a class="tarjeta" href="tp-1/index.html">
+            <div class="cabecera"><span class="emoji">📄</span><span class="numero">TP 1</span></div>
+            <span class="titulo">Atentado a la AMIA</span>
+            <span class="etiqueta html">HTML</span>
+        </a>
+        <a class="tarjeta" href="tp-2/index.html">
+            <div class="cabecera"><span class="emoji">🎯</span><span class="numero">TP 2</span></div>
+            <span class="titulo">Selectores CSS</span>
+            <span class="etiqueta css">CSS</span>
+        </a>
+        <a class="tarjeta" href="tp-3/index.html">
+            <div class="cabecera"><span class="emoji">⚖️</span><span class="numero">TP 3</span></div>
+            <span class="titulo">Especificidad CSS</span>
+            <span class="etiqueta css">CSS</span>
+        </a>
+        <a class="tarjeta" href="tp-4/index.html">
+            <div class="cabecera"><span class="emoji">📱</span><span class="numero">TP 4</span></div>
+            <span class="titulo">CSS Media Queries</span>
+            <span class="etiqueta css">CSS</span>
+        </a>
+        <a class="tarjeta" href="tp-5/index.html">
+            <div class="cabecera"><span class="emoji">🅱️</span><span class="numero">TP 5</span></div>
+            <span class="titulo">Bootstrap</span>
+            <span class="etiqueta bootstrap">Bootstrap</span>
+        </a>
+        <a class="tarjeta" href="tp-6/index.html">
+            <div class="cabecera"><span class="emoji">🧱</span><span class="numero">TP 6</span></div>
+            <span class="titulo">Grilla Bootstrap</span>
+            <span class="etiqueta bootstrap">Bootstrap</span>
+        </a>
+        <a class="tarjeta" href="tp-7/index.html">
+            <div class="cabecera"><span class="emoji">📐</span><span class="numero">TP 7</span></div>
+            <span class="titulo">Grillas y Pantallas Móviles</span>
+            <span class="etiqueta bootstrap">Bootstrap</span>
+        </a>
+        <a class="tarjeta" href="tp-8/index.html">
+            <div class="cabecera"><span class="emoji">⚙️</span><span class="numero">TP 8</span></div>
+            <span class="titulo">Funciones en JavaScript</span>
+            <span class="etiqueta js">JavaScript</span>
+        </a>
+        <a class="tarjeta" href="tp-9/index.html">
+            <div class="cabecera"><span class="emoji">📋</span><span class="numero">TP 9</span></div>
+            <span class="titulo">Listas en JavaScript</span>
+            <span class="etiqueta js">JavaScript</span>
+        </a>
+        <a class="tarjeta" href="tp-10/index.html">
+            <div class="cabecera"><span class="emoji">📦</span><span class="numero">TP 10</span></div>
+            <span class="titulo">Objetos en JavaScript</span>
+            <span class="etiqueta js">JavaScript</span>
+        </a>
+        <a class="tarjeta" href="tp-11/index.html">
+            <div class="cabecera"><span class="emoji">🗂️</span><span class="numero">TP 11</span></div>
+            <span class="titulo">Listas y Objetos en JavaScript</span>
+            <span class="etiqueta js">JavaScript</span>
+        </a>
+        <a class="tarjeta" href="tp-12/index.html">
+            <div class="cabecera"><span class="emoji">✍️</span><span class="numero">TP 12</span></div>
+            <span class="titulo">Editor de Texto</span>
+            <span class="etiqueta dom">DOM</span>
+        </a>
+        <a class="tarjeta" href="tp-13/index.html">
+            <div class="cabecera"><span class="emoji">🛒</span><span class="numero">TP 13</span></div>
+            <span class="titulo">Lista de Compras</span>
+            <span class="etiqueta dom">DOM</span>
+        </a>
+        <a class="tarjeta" href="tp-14/index.html">
+            <div class="cabecera"><span class="emoji">📇</span><span class="numero">TP 14</span></div>
+            <span class="titulo">Lista de Contactos</span>
+            <span class="etiqueta dom">DOM</span>
+        </a>
+        <a class="tarjeta" href="tp-15/index.html">
+            <div class="cabecera"><span class="emoji">🏆</span><span class="numero">TP 15</span></div>
+            <span class="titulo">Tablero de Puntos</span>
+            <span class="etiqueta dom">DOM</span>
+        </a>
+        <a class="tarjeta" href="tp-16/index.html">
+            <div class="cabecera"><span class="emoji">⚡</span><span class="numero">TP 16</span></div>
+            <span class="titulo">Pokédex</span>
+            <span class="etiqueta api">API</span>
+        </a>
+    </main>
+
+    <footer>
+        <p>Hecho con 💜, HTML, CSS y JavaScript</p>
+    </footer>
 </body>
 </html>
